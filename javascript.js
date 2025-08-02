@@ -26,24 +26,39 @@ function add(total) {
     }
 }
 
+// function hover() {
+//     const divs = document.querySelectorAll('.container div');
+//     divs.forEach(div => {
+//         div.addEventListener('mouseenter', () => {
+//             let array = randomIntegersArray();
+
+//             div.style.backgroundColor = `rgb(${array})`;
+            
+//             let currentOpacity = parseFloat(window.getComputedStyle(div).opacity);
+
+//             let newOpacity = Math.min(currentOpacity + 0.1, 1);
+//             div.style.opacity = newOpacity;
+//         }
+//     )
+//     })
+
+// }
+
+
 function hover() {
-    const divs = document.querySelectorAll('.container div');
-    divs.forEach(div => {
-        div.addEventListener('mouseenter', () => {
+    container.addEventListener('mouseenter', (e) => {
+        if (e.target.matches('.container div')) {
             let array = randomIntegersArray();
 
-            div.style.backgroundColor = `rgb(${array})`;
+            e.target.style.backgroundColor = `rgb(${array})`;
             
-            let currentOpacity = parseFloat(window.getComputedStyle(div).opacity);
+            let currentOpacity = parseFloat(window.getComputedStyle(e.target).opacity);
 
-            let newOpacity = Math.min(currentOpacity + 0.1, 1);
-            div.style.opacity = newOpacity;
+            let newOpacity = Math.min(currentOpacity + 0.05, 1);
+            e.target.style.opacity = newOpacity;
         }
-    )
-    })
-
+    }, true)
 }
-
 
 function randomIntegersArray() {
     let array = [0,0,0];
